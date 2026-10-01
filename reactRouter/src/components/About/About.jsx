@@ -1,3 +1,5 @@
+import aboutImage from "../../assets/aboutUs.jpg";
+
 export default function About() {
   return (
     <div className="py-16 bg-white">
@@ -5,8 +7,9 @@ export default function About() {
         <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
           <div className="md:w-5/12 lg:w-5/12">
             <img
-              src="https://tailus.io/sources/blocks/left-image/preview/images/startup.png"
-              alt="image"
+              className="rounded-xl shadow-sm object-contain"
+              src={aboutImage}
+              alt="React Developers"
             />
           </div>
           <div className="md:w-7/12 lg:w-6/12">

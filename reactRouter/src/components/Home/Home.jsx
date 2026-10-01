@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import remoteHero from "../../assets/remoteHero.jpg";
+import remoteFeature from "../../assets/remoteFeature.jpg";
 
 export default function Home() {
   return (
@@ -32,8 +34,8 @@ export default function Home() {
 
         <div className="absolute inset-0 w-full sm:my-20 sm:pt-1 pt-12 h-full ">
           <img
-            className="w-96"
-            src="https://i.ibb.co/5BCcDYB/Remote2.png"
+            className="w-96 rounded-xl object-contain"
+            src={remoteHero}
             alt="image1"
           />
         </div>
@@ -41,8 +43,8 @@ export default function Home() {
 
       <div className="grid  place-items-center sm:mt-20">
         <img
-          className="sm:w-96 w-48"
-          src="https://i.ibb.co/2M7rtLk/Remote1.png"
+          className="sm:w-96 w-48 rounded-xl object-contain"
+          src={remoteFeature}
           alt="image2"
         />
       </div>

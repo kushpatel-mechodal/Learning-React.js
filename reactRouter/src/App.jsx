@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <Home />
-      <Footer />
+      <Footer />  
     </BrowserRouter>
   );
 }
