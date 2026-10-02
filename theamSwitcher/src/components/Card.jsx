@@ -1,11 +1,11 @@
 
 export default function Card() {
   return (
-    <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 shadow-lg">
       <a href="/">
         <img
-          className="p-8 rounded-t-lg"
-          src="https://images.pexels.com/photos/6956905/pexels-photo-6956905.jpeg"
+          className=" rounded-t-lg"
+          src="https://images.pexels.com/photos/249538/pexels-photo-249538.jpeg"
           alt="product_image1"
         />
       </a>
