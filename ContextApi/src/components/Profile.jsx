@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import userContext from "../context/userContext";
 
 function Profile() {
-  const { user, setUser } = useContext(userContext);
+  const { user } = useContext(userContext);
 
   if (!user) {
     return (

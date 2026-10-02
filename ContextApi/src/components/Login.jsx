@@ -31,7 +31,7 @@ function Login() {
       />
       <button
         type="submit"
-        className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow transition     duration-200 cursor-pointer"
+        className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow transition duration-200 cursor-pointer"
       >
         Login
       </button>
