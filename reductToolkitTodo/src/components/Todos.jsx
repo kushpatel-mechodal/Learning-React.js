@@ -1,29 +1,70 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeTodo } from "../features/Todo/todoSlice";
+import { removeTodo, updateTodo } from "../features/Todo/todoSlice";
 
 function Todos() {
-  const todos = useSelector((state) => state?.todos || []);
+  const todos = useSelector((state) => state.todos);
+  const [editId, setEditId] = useState(null);
+  const [editText, setEditText] = useState("");
+
   const dispatch = useDispatch();
 
+  const handleEdit = (todo) => {
+    setEditId(todo.id);
+    setEditText(todo.text);
+  };
+
+  const handleUpdate = () => {
+    dispatch(
+      updateTodo({
+        id: editId,
+        text: editText,
+      })
+    );
+    setEditId(null);
+    setEditText("");
+  };
+
   return (
-    <div className="w-full mt-8">
-      <h2 className="text-xl font-semibold mb-4 text-center text-gray-200">
-        Todos
-      </h2>
-      {todos.length === 0 ? (
-        <p className="text-center text-gray-500 py-4">No todos yet.</p>
-      ) : (
-        <ul className="list-none w-full space-y-3">
-          {todos.map((todo) => (
-            <li
-              className="flex justify-between items-center bg-zinc-800 px-4 py-3 rounded-lg shadow-md border border-zinc-700/50"
-              key={todo.id}
-            >
+    <>
+      <div className="text-white text-xl font-bold mt-4">Todos</div>
+      <ul className="list-none w-full max-w-md">
+        {todos.map((todo) => (
+          <li
+            className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded"
+            key={todo.id}
+          >
+            {editId === todo.id ? (
+              <input
+                value={editText}
+                onChange={(e) => setEditText(e.target.value)}
+                className="text-black px-2 py-1 rounded"
+              />
+            ) : (
               <div className="text-white">{todo.text}</div>
+            )}
+
+            {/* Buttons side by side */}
+            <div className="flex space-x-2">
+              {editId === todo.id ? (
+                <button
+                  onClick={handleUpdate}
+                  className="bg-green-500 text-white px-3 py-1 rounded"
+                >
+                  Update
+                </button>
+              ) : (
+                <button
+                  onClick={() => handleEdit(todo)}
+                  className="bg-blue-500 text-white px-3 py-1 rounded"
+                >
+                  Edit
+                </button>
+              )}
+
               <button
                 onClick={() => dispatch(removeTodo(todo.id))}
-                className="text-white bg-red-500 hover:bg-red-600 border-0 p-2 rounded cursor-pointer transition-colors duration-200 shrink-0"
-                aria-label="Delete todo"
+                className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +72,7 @@ function Todos() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-5 h-5"
+                  className="w-6 h-6"
                 >
                   <path
                     strokeLinecap="round"
@@ -40,11 +81,11 @@ function Todos() {
                   />
                 </svg>
               </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
 
