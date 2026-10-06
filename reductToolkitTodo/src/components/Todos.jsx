@@ -1,9 +1,8 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeTodo } from "../features/Todo/todoSlice";
 
 function Todos() {
-  const todos = useSelector((state) => state.todos || []);
+  const todos = useSelector((state) => state?.todos || []);
   const dispatch = useDispatch();
 
   return (
@@ -20,9 +19,7 @@ function Todos() {
               className="flex justify-between items-center bg-zinc-800 px-4 py-3 rounded-lg shadow-md border border-zinc-700/50"
               key={todo.id}
             >
-              <div className="text-white text-base break-words mr-3">
-                {todo.text}
-              </div>
+              <div className="text-white">{todo.text}</div>
               <button
                 onClick={() => dispatch(removeTodo(todo.id))}
                 className="text-white bg-red-500 hover:bg-red-600 border-0 p-2 rounded cursor-pointer transition-colors duration-200 shrink-0"
