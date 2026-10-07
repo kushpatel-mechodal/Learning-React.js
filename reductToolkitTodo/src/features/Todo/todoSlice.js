@@ -32,6 +32,7 @@ export const todoSlice = createSlice({
   },
 });
 
+// export individual reducers 
 export const { addTodo, removeTodo, updateTodo } = todoSlice.actions;
 
 // export the reducer for using the store.js
