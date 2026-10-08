@@ -42,7 +42,10 @@ function Header() {
       <Container>
         <nav className="flex items-center justify-between">
           <div className="mr-6">
-            <Link to="/" className="inline-block hover:opacity-90 transition-opacity">
+            <Link
+              to="/"
+              className="inline-block hover:opacity-90 transition-opacity"
+            >
               <Logo width="70px" />
             </Link>
           </div>

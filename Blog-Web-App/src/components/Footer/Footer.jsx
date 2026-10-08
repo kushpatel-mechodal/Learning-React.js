@@ -14,7 +14,8 @@ function Footer() {
                 <Logo width="100px" />
               </div>
               <p className="text-sm text-gray-400 max-w-sm mb-6 leading-relaxed">
-                Discover insightful stories, creative thinking, and practical ideas from our vibrant community of writers and developers.
+                Discover insightful stories, creative thinking, and practical
+                ideas from our vibrant community of writers and developers.
               </p>
             </div>
             <div>
@@ -30,22 +31,34 @@ function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link className="text-sm text-gray-400 hover:text-white transition-colors duration-200" to="/">
+                <Link
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  to="/"
+                >
                   Features
                 </Link>
               </li>
               <li>
-                <Link className="text-sm text-gray-400 hover:text-white transition-colors duration-200" to="/">
+                <Link
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  to="/"
+                >
                   Pricing
                 </Link>
               </li>
               <li>
-                <Link className="text-sm text-gray-400 hover:text-white transition-colors duration-200" to="/">
+                <Link
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  to="/"
+                >
                   Affiliate Program
                 </Link>
               </li>
               <li>
-                <Link className="text-sm text-gray-400 hover:text-white transition-colors duration-200" to="/">
+                <Link
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  to="/"
+                >
                   Press Kit
                 </Link>
               </li>
@@ -58,22 +71,34 @@ function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link className="text-sm text-gray-400 hover:text-white transition-colors duration-200" to="/">
+                <Link
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  to="/"
+                >
                   Account
                 </Link>
               </li>
               <li>
-                <Link className="text-sm text-gray-400 hover:text-white transition-colors duration-200" to="/">
+                <Link
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  to="/"
+                >
                   Help Center
                 </Link>
               </li>
               <li>
-                <Link className="text-sm text-gray-400 hover:text-white transition-colors duration-200" to="/">
+                <Link
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  to="/"
+                >
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link className="text-sm text-gray-400 hover:text-white transition-colors duration-200" to="/">
+                <Link
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  to="/"
+                >
                   Customer Support
                 </Link>
               </li>
@@ -86,17 +111,26 @@ function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link className="text-sm text-gray-400 hover:text-white transition-colors duration-200" to="/">
+                <Link
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  to="/"
+                >
                   Terms &amp; Conditions
                 </Link>
               </li>
               <li>
-                <Link className="text-sm text-gray-400 hover:text-white transition-colors duration-200" to="/">
+                <Link
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  to="/"
+                >
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link className="text-sm text-gray-400 hover:text-white transition-colors duration-200" to="/">
+                <Link
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  to="/"
+                >
                   Licensing
                 </Link>
               </li>
