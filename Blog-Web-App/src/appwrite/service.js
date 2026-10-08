@@ -37,7 +37,7 @@ export class Service{
         }
     }
 
-    async updatePost(ID, {title,content,image,status,userid}){
+    async updatePost(ID, {title,content,image,status}){
 
         try {
             return await this.tableDB.updateRow({
@@ -88,7 +88,6 @@ export class Service{
 
     async getPosts(queries = [Query.equal("status","active")]){
         try {
-            
             return await this.tableDB.getPosts({
                 databaseId: config.appwriteDatabaseId,
                 tableId: config.appwriteTableId,
