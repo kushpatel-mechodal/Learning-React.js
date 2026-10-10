@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { Outlet } from "react-router-dom";
 import "./App.css";
 import authService from "./appwrite/auth";
 import { login, logout } from "./features/authSlice";
@@ -26,7 +27,7 @@ function App() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [dispatch]);
 
   if (loading) {
     return (
@@ -42,11 +43,8 @@ function App() {
       <div className="min-h-screen flex flex-wrap content-between bg-gray-900 text-white">
         <div className="w-full block">
           <Header />
-          <main className="min-h-[calc(100vh-160px)] py-10 px-4 flex flex-col items-center justify-center">
-            <h1 className="text-3xl md:text-5xl font-extrabold text-center text-indigo-400 mb-4">
-              A Blog Website
-            </h1>
-            {/* handle outlet */}
+          <main className="min-h-[calc(100vh-160px)] py-4 px-4">
+            <Outlet />
           </main>
           <Footer />
         </div>

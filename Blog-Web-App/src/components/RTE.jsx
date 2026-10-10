@@ -8,10 +8,12 @@ function RTE({ name, control, label, defaultValue = "" }) {
       {label && <label className="inline-block mb-1 pl-1">{label}</label>}
 
       <Controller
-        name = {name || "Content"}
+        name={name || "Content"}
         control={control}
-        render={({field: {onChange}})=> (
+        render={({ field: { onChange } }) => (
           <Editor
+            tinymceScriptSrc="/tinymce/tinymce.min.js"
+            licenseKey="gpl"
             initialValue={defaultValue}
             init={{
               branding: false,

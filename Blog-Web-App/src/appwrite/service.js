@@ -3,7 +3,7 @@ import { Client, ID, Storage, TablesDB, Query } from "appwrite";
 
 export class Service {
   client = new Client();
-  TablesDB;
+  tableDB;
   storage;
 
   constructor() {
@@ -15,7 +15,7 @@ export class Service {
     this.storage = new Storage(this.client);
   }
 
-  async createPost({ title, content, image, status, userid }) {
+  async createPost({ title, slug, content, image, status, userid }) {
     try {
       return await this.tableDB.createRow({
         databaseId: config.appwriteDatabaseId,
@@ -23,6 +23,7 @@ export class Service {
         rowId: ID.unique(),
         data: {
           title,
+          slug: slug || title?.trim().toLowerCase().replace(/[^a-zA-Z0-9-]/g, "-") || "post",
           content,
           image,
           status,
@@ -34,30 +35,33 @@ export class Service {
     }
   }
 
-  async updatePost(ID, { title, content, image, status }) {
+  async updatePost(id, { title, slug, content, image, status }) {
     try {
+      const data = {
+        title,
+        content,
+        image,
+        status,
+      };
+      if (slug) data.slug = slug;
+
       return await this.tableDB.updateRow({
         databaseId: config.appwriteDatabaseId,
         tableId: config.appwriteTableId,
-        rowId: ID.unique(),
-        data: {
-          title,
-          content,
-          image,
-          status,
-        },
+        rowId: id,
+        data,
       });
     } catch (error) {
       console.log("Update post Error: ", error);
     }
   }
 
-  async deletePost(ID) {
+  async deletePost(id) {
     try {
       await this.tableDB.deleteRow({
         databaseId: config.appwriteDatabaseId,
         tableId: config.appwriteTableId,
-        rowId: ID.unique(),
+        rowId: id,
       });
       return true;
     } catch (error) {
@@ -66,12 +70,12 @@ export class Service {
     }
   }
 
-  async getPost(ID) {
+  async getPost(id) {
     try {
       return await this.tableDB.getRow({
         databaseId: config.appwriteDatabaseId,
         tableId: config.appwriteTableId,
-        rowId: ID.unique(),
+        rowId: id,
       });
     } catch (error) {
       console.log("Get post Error: ", error);
@@ -81,7 +85,7 @@ export class Service {
 
   async getPosts(queries = [Query.equal("status", "active")]) {
     try {
-      return await this.tableDB.getPosts({
+      return await this.tableDB.listRows({
         databaseId: config.appwriteDatabaseId,
         tableId: config.appwriteTableId,
         queries,
@@ -94,8 +98,8 @@ export class Service {
 
   async uploadFile(file) {
     try {
-      return this.storage.createFile({
-        bucketIdId: config.appwriteBucketId,
+      return await this.storage.createFile({
+        bucketId: config.appwriteBucketId,
         fileId: ID.unique(),
         file: file,
       });
@@ -108,7 +112,7 @@ export class Service {
   async deleteFile(fileId) {
     try {
       return await this.storage.deleteFile({
-        bucketIdId: config.appwriteBucketId,
+        bucketId: config.appwriteBucketId,
         fileId: fileId,
       });
     } catch (error) {
@@ -120,7 +124,7 @@ export class Service {
   getFilePreview(fileId) {
     try {
       return this.storage.getFilePreview({
-        bucketIdId: config.appwriteBucketId,
+        bucketId: config.appwriteBucketId,
         fileId: fileId,
       });
     } catch (error) {
