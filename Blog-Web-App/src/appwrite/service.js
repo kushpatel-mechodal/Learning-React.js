@@ -122,14 +122,28 @@ export class Service {
   }
 
   getFilePreview(fileId) {
+    if (!fileId) return "";
     try {
-      return this.storage.getFilePreview({
+      return this.storage.getFileView({
         bucketId: config.appwriteBucketId,
         fileId: fileId,
       });
     } catch (error) {
-      console.log("image preview  Error: ", error);
-      return false;
+      console.log("image preview Error: ", error);
+      return "";
+    }
+  }
+
+  getFileView(fileId) {
+    if (!fileId) return "";
+    try {
+      return this.storage.getFileView({
+        bucketId: config.appwriteBucketId,
+        fileId: fileId,
+      });
+    } catch (error) {
+      console.log("image view Error: ", error);
+      return "";
     }
   }
 }

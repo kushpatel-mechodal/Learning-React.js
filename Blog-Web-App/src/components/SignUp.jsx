@@ -1,7 +1,9 @@
 import { useState } from "react";
 import authService from "../appwrite/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Input, Logo } from "./index";
+import Button from "./Button";
+import Input from "./Input";
+import Logo from "./Logo";
 import { useForm } from "react-hook-form";
 
 function SignUp() {

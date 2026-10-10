@@ -38,7 +38,7 @@ function PostForm({ post }) {
       });
 
       if (dbPost) {
-        navigate(`/post/${dbPost.$id}`);
+        navigate("/all-posts");
       }
     } else {
       //Create post
@@ -57,7 +57,7 @@ function PostForm({ post }) {
       });
 
       if (dbPost) {
-        navigate(`/post/${dbPost.$id}`);
+        navigate("/all-posts");
       }
     }
   };
