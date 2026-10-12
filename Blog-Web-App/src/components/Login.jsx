@@ -39,10 +39,10 @@ function Login() {
   return (
     <div className="flex items-center justify-center w-full">
       <div className="mx-auto w-full max-w-lg bg-gray-800/90 rounded-2xl p-8 sm:p-10 border border-gray-700/60 shadow-xl">
-        <div className="mb-2 flex justify-center">
-          <span className="inline-block w-full max-w-[100px]">
-            <Logo width="100%" />
-          </span>
+        <div className="mb-4 flex justify-center">
+          <Link to="/" className="inline-flex items-center justify-center">
+            <Logo />
+          </Link>
         </div>
         <h2 className="text-center text-2xl font-bold leading-tight text-white">
           Sign In to your Account

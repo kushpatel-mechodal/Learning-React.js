@@ -43,7 +43,7 @@ function Home() {
             </p>
             <Link
               to={authStatus ? "/add-post" : "/login"}
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-purple-600 via-indigo-500 to-indigo-600 text-white font-semibold rounded-xl shadow-lg shadow-indigo-600/30 hover:opacity-95 transition-opacity"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-linear-to-r from-purple-600 via-indigo-500 to-indigo-600 text-white font-semibold rounded-xl shadow-lg shadow-indigo-600/30 hover:opacity-95 transition-opacity"
             >
               {authStatus ? "+ Create Post" : "Login to Read Posts"}
             </Link>
