@@ -26,7 +26,7 @@ app.get("/api/products", (req, res) => {
   }
   setTimeout(() => {
     res.send(products);
-  }, 1000);
+  }, 3000);
 });
 
 const port = process.env.PORT || 5000;
