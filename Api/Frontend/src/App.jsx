@@ -137,6 +137,3 @@ function App() {
 
 export default App;
 
-const customReactQuery = (urlPath) => {
-  return [products, error, loading];
-};
