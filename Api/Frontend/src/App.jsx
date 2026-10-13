@@ -11,6 +11,7 @@ function App() {
   useEffect(() => {
     const controller = new AbortController();
 
+    //debouncing code
     const timer = setTimeout(async () => {
       try {
         setLoading(true);

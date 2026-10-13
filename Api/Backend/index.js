@@ -14,16 +14,19 @@ app.get("/api/products", (req, res) => {
       id: 2,
       name: "samsung s23",
       price: 35000,
-      image: "https://www.pexels.com/photo/get-ready-for-the-future-with-samsung-galaxy-s23-16149966/",
+      image:
+        "https://www.pexels.com/photo/get-ready-for-the-future-with-samsung-galaxy-s23-16149966/",
     },
   ];
-  
-  if(req.query.search){
 
-   const productFilter =  products.filter(product => product.name.includes(req.query.search));
-   res.send(productFilter);
-   return;
+  if (req.query.search) {
+    const productFilter = products.filter((product) =>
+      product.name.includes(req.query.search),
+    );
+    res.send(productFilter);
+    return;
   }
+
   setTimeout(() => {
     res.send(products);
   }, 3000);
