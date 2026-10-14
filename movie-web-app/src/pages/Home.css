@@ -1,0 +1,15 @@
+.home {
+  width: 100%;
+  padding: 24px 0;
+  flex: 1;
+}
+
+.section-title {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 8px;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 700;
+}
+
