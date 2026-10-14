@@ -30,7 +30,7 @@ function App() {
           console.log("Request cancelled", error.message);
           return;
         }
-
+        
         setError(true);
         setLoading(false);
       }
