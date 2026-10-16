@@ -74,3 +74,14 @@
 .search-wrapper:focus-within .search-icon {
   color: #3b82f6;
 }
+
+.status-text {
+  text-align: center;
+  color: #cbd5e1;
+  font-size: 18px;
+  margin-top: 60px;
+}
+
+.status-text.error {
+  color: #ef4444;
+}

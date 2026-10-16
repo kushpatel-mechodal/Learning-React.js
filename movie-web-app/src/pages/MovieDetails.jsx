@@ -3,13 +3,13 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "./MovieDetails.css";
 
-function formatDuration(durationStr) {
-  if (!durationStr) return "N/A";
-  return durationStr
-    .replace("PT", "")
-    .replace("H", "h ")
-    .replace("M", "m");
-}
+const formatDuration = (durationStar) => {
+  if (!durationStar) {
+    return "N/A";
+  } else {
+    return durationStar.replace("PT", "").replace("H", "h").replace("M", "m");
+  }
+};
 
 function MovieDetails() {
   const { rank } = useParams();
@@ -28,19 +28,21 @@ function MovieDetails() {
           "https://raw.githubusercontent.com/sharmadhiraj/free-json-datasets/master/docs/sports-entertainment/imdb_top_movies.json",
         );
 
-        const allMovies = response.data?.data || [];
+        const allMovies = response.data.data;
         const selectedMovie = allMovies.find(
-          (item) => String(item.rank) === String(rank),
+          (item) => String(item.rank) === rank,
         );
 
         if (!selectedMovie) {
           throw new Error(`Movie with rank #${rank} was not found.`);
         }
 
-        setMovie(selectedMovie);
+        setTimeout(() => {
+          setMovie(selectedMovie);
+          setLoading(false);
+        }, 400);
       } catch (err) {
         setError(err.message || "Failed to load movie details.");
-      } finally {
         setLoading(false);
       }
     };
@@ -51,15 +53,12 @@ function MovieDetails() {
   return (
     <main className="movie-details-page">
       <div className="details-wrapper">
-        {/* ========================================================= */}
-        {/* ⭐⭐⭐ BACK TO MOVIES BUTTON (આ રહ્યું બટન) ⭐⭐⭐ */}
-        {/* ========================================================= */}
         <Link to="/" className="back-btn">
           <i className="fa-solid fa-arrow-left"></i> Back to Movies
         </Link>
-        {/* ========================================================= */}
 
         {loading && <p className="status-text">Loading movie details...</p>}
+
         {error && <p className="status-text error">{error}</p>}
 
         {!loading && !error && movie && (
@@ -80,24 +79,20 @@ function MovieDetails() {
                 <span className="rating-badge">
                   <i className="fa-solid fa-star"></i> {movie.rating} / 10
                 </span>
-                {movie.rating_count && (
-                  <span className="votes-text">
-                    ({movie.rating_count.toLocaleString()} votes)
-                  </span>
-                )}
+
                 {movie.duration && (
                   <span className="meta-tag">
-                    <i className="fa-regular fa-clock"></i> {formatDuration(movie.duration)}
+                    <i className="fa-regular fa-clock"></i>{" "}
+                    {formatDuration(movie.duration)}
                   </span>
-                )}
-                {movie.content_rating && (
-                  <span className="meta-tag cert">{movie.content_rating}</span>
                 )}
               </div>
 
-              {movie.genres && movie.genres.length > 0 && (
+              {movie.genres && (
                 <div className="genres-container">
+                  {/* types of category can be display */}
                   {movie.genres.map((genre) => (
+                    // use key for unique identity
                     <span key={genre} className="genre-badge">
                       {genre}
                     </span>

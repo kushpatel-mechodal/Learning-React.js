@@ -19,11 +19,12 @@ function Home() {
           "https://raw.githubusercontent.com/sharmadhiraj/free-json-datasets/master/docs/sports-entertainment/imdb_top_movies.json",
         );
 
-        setMovies(response.data.data.slice(0, 100));
+        setTimeout(() => {
+          setMovies(response.data.data.slice(0, 100));
+          setLoading(false);
+        }, 400);
       } catch (error) {
         setError(`Failed to Fetch Movies: ${error.message}`);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -50,7 +51,7 @@ function Home() {
       </div>
       <div className="section-title">Populer Movie</div>
 
-      {loading && <p>Loading Movies...</p>}
+      {loading && <p className="status-text">Loading Movies...</p>}
 
       {error && <p>{error}</p>}
 

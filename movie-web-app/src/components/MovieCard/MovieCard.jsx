@@ -13,7 +13,9 @@ function MovieCard({ movie }) {
         <div className="movie-info">
           <h3 className="movie-title">{movie.title}</h3>
           <p className="movie-year">Rank #{movie.rank}</p>
-          <p className="movie-rating">⭐ {movie.rating}</p>
+          <p className="movie-rating">
+            <i className="fa-solid fa-star"></i> {movie.rating}
+          </p>
         </div>
       </div>
     </Link>
