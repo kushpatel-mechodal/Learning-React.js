@@ -112,7 +112,12 @@
   cursor: pointer;
 }
 
-.categories button:hover,
+.categories button:hover{
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
 .categories button:active{
   background: #1e3a5f;
   border-color: #e4e7ea;

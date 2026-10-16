@@ -9,6 +9,8 @@ function Home() {
   const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemPerPage, setItemPerPage] = useState(10);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -21,7 +23,7 @@ function Home() {
         );
 
         setTimeout(() => {
-          setMovies(response.data.data.slice(0, 100));
+          setMovies(response.data.data.slice(0, 200));
           setLoading(false);
         }, 400);
       } catch (error) {
@@ -43,7 +45,7 @@ function Home() {
       ? movies
       : movies.filter((movie) => movie.genres.includes(selectedGenre));
 
-  // use filter movie for only show particular category movie 
+  // use filter movie for only show particular category movie
   const searchMovies = filterMovies.filter((movie) =>
     movie.title?.toLowerCase().includes(search.toLowerCase()),
   );
