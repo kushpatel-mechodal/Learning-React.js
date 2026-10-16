@@ -8,6 +8,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("All");
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -31,7 +32,19 @@ function Home() {
     fetchMovie();
   }, []);
 
-  const searchMovies = movies.filter((movie) =>
+  // flatmap function return the multiple array data and collect the data
+  const allGenres = movies.flatMap((movie) => movie.genres ?? []);
+
+  // set method can be remove duplicate data, ... spard operator to collect data and return to new array
+  const genres = [...new Set(allGenres)].filter(Boolean);
+
+  const filterMovies =
+    selectedGenre === "All"
+      ? movies
+      : movies.filter((movie) => movie.genres.includes(selectedGenre));
+
+  // use filter movie for only show particular category movie 
+  const searchMovies = filterMovies.filter((movie) =>
     movie.title?.toLowerCase().includes(search.toLowerCase()),
   );
 
@@ -51,6 +64,26 @@ function Home() {
       </div>
       <div className="section-title">Populer Movie</div>
 
+      <div className="categories">
+        <button
+          type="button"
+          className={selectedGenre === "All" ? "active" : ""}
+          onClick={() => setSelectedGenre("All")}
+        >
+          All
+        </button>
+
+        {genres.map((genre) => (
+          <button
+            key={genre}
+            type="button"
+            className={selectedGenre === genre ? "active" : ""}
+            onClick={() => setSelectedGenre(genre)}
+          >
+            {genre}
+          </button>
+        ))}
+      </div>
       {loading && <p className="status-text">Loading Movies...</p>}
 
       {error && <p>{error}</p>}
