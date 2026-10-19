@@ -9,8 +9,8 @@ function Home() {
   const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("All");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemPerPage, setItemPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1); //use for current page and inital value 1 page
+  const [itemPerPage, setItemPerPage] = useState(20); //use for movie can be display in per page
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -50,6 +50,35 @@ function Home() {
     movie.title?.toLowerCase().includes(search.toLowerCase()),
   );
 
+  //ceil function return the full number
+  const totalPages = Math.ceil(searchMovies.length / itemPerPage);
+
+  //it returns the index of page
+  const startIndex = (currentPage - 1) * itemPerPage;
+
+  //it return the movie par page
+  const currentMovies = searchMovies.slice(
+    startIndex,
+    startIndex + itemPerPage,
+  );
+
+  //pagination function and increase page number
+  const handleNext = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrev = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const pages = [];
+
+  const startPage = Math.floor((currentPage - 1) / 5) * 5 + 1;
+
+  for (let i = startPage; i < startPage + 5 && i <= totalPages; i++) {
+    pages.push(i);
+  }
+
   return (
     <main className="home">
       <div className="search-container">
@@ -60,7 +89,10 @@ function Home() {
             className="search-movie"
             placeholder="Search Movie"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setCurrentPage(1);
+            }}
           />
         </div>
       </div>
@@ -70,7 +102,10 @@ function Home() {
         <button
           type="button"
           className={selectedGenre === "All" ? "active" : ""}
-          onClick={() => setSelectedGenre("All")}
+          onClick={() => {
+            setSelectedGenre("All");
+            setCurrentPage(1);
+          }}
         >
           All
         </button>
@@ -80,22 +115,58 @@ function Home() {
             key={genre}
             type="button"
             className={selectedGenre === genre ? "active" : ""}
-            onClick={() => setSelectedGenre(genre)}
+            onClick={() => {
+              setSelectedGenre(genre);
+              setCurrentPage(1);
+            }}
           >
             {genre}
           </button>
         ))}
       </div>
+
       {loading && <p className="status-text">Loading Movies...</p>}
 
       {error && <p>{error}</p>}
 
       {!loading && !error && (
-        <div className="movie-grid">
-          {searchMovies.map((movie) => (
-            <MovieCard key={movie.rank} movie={movie} />
-          ))}
-        </div>
+        <>
+          <div className="movie-grid">
+            {currentMovies.map((movie) => (
+              <MovieCard key={movie.rank} movie={movie} />
+            ))}
+          </div>
+          <div className="pagination">
+            <button
+              type="button"
+              className="prev-btn"
+              onClick={handlePrev}
+              disabled={currentPage === 1}
+            >
+              Prev
+            </button>
+
+            {/* display the 1 to 5 page numbers */}
+            {pages.map((page, index) => (
+              <button
+                key={index}
+                className={currentPage === page ? "active" : ""}
+                onClick={() => setCurrentPage(page)}
+              >
+                {page}
+              </button>
+            ))}
+
+            <button
+              type="button"
+              className="next-btn"
+              onClick={handleNext}
+              disabled={currentPage === totalPages || totalPages === 0}
+            >
+              Next
+            </button>
+          </div>
+        </>
       )}
     </main>
   );
