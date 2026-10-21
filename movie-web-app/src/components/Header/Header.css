@@ -105,3 +105,9 @@
     transition: all 0.3s ease-in-out;
   }
 }
+
+/* has can check if element exist or not */
+body:has(.nav-list.menu) {
+  /* hidden denied to permission of scroll */
+  overflow: hidden;
+}
