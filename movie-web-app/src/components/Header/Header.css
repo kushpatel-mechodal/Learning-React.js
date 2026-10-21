@@ -1,9 +1,8 @@
-
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color:  #020D20;
+  background-color: #020d20;
   padding: 16px 0;
 }
 
@@ -15,10 +14,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .logo {
-  color: #3B82F6;
+  color: #3b82f6;
   font-size: 24px;
   font-weight: bold;
   text-decoration: none;
@@ -48,7 +48,60 @@
 
 .nav-link:hover,
 .nav-link.active {
-  background-color: #3B82F6;
+  background-color: #324461;
   color: white;
 }
 
+/* navbar toggle button */
+.menu-toggle {
+  display: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    background-color: #020d20;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-list.menu {
+    display: flex;
+    max-height: 100px;
+    padding: 20px 0;
+  }
+
+  .nav-list li {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .nav-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+  }
+}

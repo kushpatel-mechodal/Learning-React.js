@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
+  // menu open and close use for mobile responsive
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const navItems = [
     {
       name: "Movies",
@@ -17,7 +20,17 @@ function Header() {
           Movie App
         </Link>
 
-        <ul className="nav-list">
+        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+          {/* if menu state true then display ✕ otherwise by default ☰ */}
+          {menuOpen ? "✕" : "☰"}
+        </button>
+
+        <ul
+          // if menuopen true then add menu class
+          className={`nav-list  ${menuOpen ? "menu" : ""}`}
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+        >
           {navItems.map((item) => (
             <li key={item.name}>
               <NavLink
@@ -30,7 +43,6 @@ function Header() {
               </NavLink>
             </li>
           ))}
-          
         </ul>
       </nav>
     </header>

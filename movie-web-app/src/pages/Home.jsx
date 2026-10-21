@@ -73,8 +73,10 @@ function Home() {
 
   const pages = [];
 
+  // Calculate the first page number in the current group
   const startPage = Math.floor((currentPage - 1) / 5) * 5 + 1;
 
+  // Add up to 5 page numbers
   for (let i = startPage; i < startPage + 5 && i <= totalPages; i++) {
     pages.push(i);
   }
