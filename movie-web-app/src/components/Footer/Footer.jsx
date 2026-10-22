@@ -1,9 +1,9 @@
 import React from "react";
 import "./Footer.css";
 
-function Footer() {
+function Footer({ themeToggle }) {
   return (
-    <footer className="footer">
+    <footer className={`footer ${themeToggle ? "light-mode" : "dark-mode"}`}>
       <div>
         <p> © 2026 Movie App. All rights reserved.</p>
       </div>

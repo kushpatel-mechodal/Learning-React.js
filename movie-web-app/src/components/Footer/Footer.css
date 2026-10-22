@@ -1,18 +1,29 @@
 .footer {
-  background-color: #020d20;
-  color: white;
   padding: 24px;
   text-align: center;
-  border-top: 1px solid #1e293b;
   margin-top: auto;
   display: flex;
   gap: 10px;
   justify-content: center;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+/* Default dark mode */
+.footer.dark-mode {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Light mode */
+.footer.light-mode {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-top: 1px solid var(--border-color);
 }
 
 .footer p {
   margin: 6px 0;
-  font-size: 14px;
   font-size: 16px;
   transition: all 0.2s ease-in-out;
 }

@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faXmark,
+  faMoon,
+  faSun,
+} from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
 
-function Header() {
+function Header({ themeToggle, setThemeToggle }) {
   // menu open and close use for mobile responsive
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -14,15 +21,31 @@ function Header() {
   ];
 
   return (
-    <header className="header">
+    <header className={`header ${themeToggle ? "light-mode" : "dark-mode"}`}>
       <nav className="navbar ">
         <Link to="/" className="logo">
           Movie App
         </Link>
 
-        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+        <button
+          type="button"
+          className={`theme-toggle ${themeToggle ? "light-mode" : "dark-mode"}`}
+          onClick={() => setThemeToggle(!themeToggle)}
+          aria-label="Toggle dark and light mode"
+        >
+          {/* if them state true then display ☽ otherwise by default  */}
+          <FontAwesomeIcon icon={themeToggle ? faSun : faMoon} />
+        </button>
+
+        <button
+          type="button"
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+        >
           {/* if menu state true then display ✕ otherwise by default ☰ */}
-          {menuOpen ? "✕" : "☰"}
+          <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
         </button>
 
         <ul

@@ -27,3 +27,37 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+/* variable css use for common styling */
+
+/* dark-mode */
+.dark-mode {
+  --bg-color: #06172f;
+  --text-color: #ffffff;
+  --muted-text: #cbd5e1;
+  --card-color: #0f1f38;
+  --border-color: #334155;
+  --input-bg: #0f1f38;
+  --button-bg: #0f1f38;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  /* min-height: 100vh; */
+  margin: 0;
+}
+
+/* light-mode */
+.light-mode {
+  --bg-color: #f8fafc;
+  --text-color: #111827;
+  --muted-text: #475569;
+  --card-color: #ffffff;
+  --border-color: #cbd5e1;
+  --input-bg: #ffffff;
+  --button-bg: #e2e8f0;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  /* min-height: 100vh; */
+  margin: 0;
+}

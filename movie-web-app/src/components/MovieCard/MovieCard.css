@@ -19,8 +19,9 @@
 .movie-card {
   min-width: 0;
   margin-top: 20px;
-  background-color: #0f1f38;
-  color: white;
+  background-color: var(--card-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   transition: box-shadow 0.2s ease;
   overflow: hidden;
@@ -52,11 +53,12 @@
 .movie-title {
   margin: 0 0 8px;
   font-size: 16px;
+  color: var(--text-color);
 }
 
 .movie-year {
   margin: 0;
-  color: #cbd5e1;
+  color: var(--muted-text);
   font-size: 14px;
 }
 

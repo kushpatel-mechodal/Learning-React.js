@@ -62,6 +62,13 @@
     box-shadow 0.2s ease;
 }
 
+/* light mode css */
+.light-mode .search-movie{
+  background-color: var(--input-bg);
+  color: var(--muted-text);
+  border: 1px solid var(--border-color);
+  
+}
 .search-movie::placeholder {
   color: #94a3b8;
 }
@@ -95,6 +102,23 @@
   gap: 10px;
   margin: 0 auto 30px;
   margin-top: 30px;
+}
+
+.light-mode .categories button {
+  background-color: var(--button-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.light-mode .categories button:hover {
+  background-color: var(--button-bg);
+  transition: all 0.3s ease-in-out;
+}
+
+.light-mode .categories button:active {
+  background-color: var(--button-bg);
+  transition: all 0.3s ease-in-out;
 }
 
 .categories button {
@@ -142,6 +166,16 @@
   margin-top: 20px;
 }
 
+.light-mode .pagination button{
+  width: 60px;
+  height: 40px;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
 .pagination button:hover {
   background-color: #334155;
   color: #ffffff;
